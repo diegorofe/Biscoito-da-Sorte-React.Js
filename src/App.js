@@ -1,33 +1,44 @@
-import React from 'react'
+import { render } from '@testing-library/react'
+import React, { Component } from 'react'
 
-const Equipe = (props) => {
-  return(
-  <div>
-    <Sobre nome={props.nome} idade={props.idade} cargo={props.cargo} />
-    <Social fb={props.fb}/>
-    <hr/>
-   </div>
-  );
+class Equipe extends Component {
+  render() {
+    return (
+      <div>
+        <Sobre nome={this.props.nome} idade={this.props.idade} cargo={this.props.cargo} />
+        <Social fb={this.props.fb}/>
+        <hr/>
+      </div>
+    );
+  }
 }
 
-const Sobre = (props) => {
-  return (
-    <div>
-      <h2>Olá sou o {props.nome}</h2>
-      <h3>Cargo: {props.cargo}</h3>
-      <h3>Idade: {props.idade}</h3>
-    </div>
-  );
+class Sobre extends Component {
+ 
+  render() {
+    return (
+      <div>
+        <h2>Olá sou o {this.props.nome}</h2>
+        <h3>Cargo: {this.props.cargo}</h3>
+        <h3>Idade: {this.props.idade}</h3>
+      </div>
+    );  
 }
+}
+  
+  
 
-const Social = (props) => {
+
+const Social = () => {
+
   return (
     <div>
-      <a href={props.fb} >Facebook </a>
+      <a >Facebook </a>
       <a>Linkedin </a>
       <a>Instagram </a>
     </div>
   );
+ 
 }
 
 function App() {
