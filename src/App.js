@@ -1,54 +1,56 @@
-import { render } from '@testing-library/react'
 import React, { Component } from 'react'
 
-class Equipe extends Component {
+class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      nome: "Diego",
+      contador: 0
+    };
+
+     this.aumentar = this.aumentar.bind(this)
+     this.diminuir = this.diminuir.bind(this)
+
+  }
+  
+aumentar() {
+
+  let state = this.state;
+  state.contador += 1;
+  state.nome = 'Maria';
+
+  this.setState(state)
+  
+}
+
+diminuir() {
+  let state = this.state;
+  
+  if(state.contador === 0){
+    alert("O valor não pode ser menor que ZERO!")
+    return
+  }
+  
+  state.contador -= 1;
+  this.setState(state)
+}
+
+
+
   render() {
     return (
       <div>
-        <Sobre nome={this.props.nome} idade={this.props.idade} cargo={this.props.cargo} />
-        <Social fb={this.props.fb}/>
-        <hr/>
+        <h1>Contador</h1>
+        {this.state.nome}
+          <h3>
+            <button onClick={this.diminuir}> - </button>
+              {this.state.contador}
+            <button onClick={this.aumentar} > + </button>
+          </h3>
       </div>
-    );
+    )
   }
 }
 
-class Sobre extends Component {
- 
-  render() {
-    return (
-      <div>
-        <h2>Olá sou o {this.props.nome}</h2>
-        <h3>Cargo: {this.props.cargo}</h3>
-        <h3>Idade: {this.props.idade}</h3>
-      </div>
-    );  
-}
-}
-  
-  
-
-
-const Social = () => {
-
-  return (
-    <div>
-      <a >Facebook </a>
-      <a>Linkedin </a>
-      <a>Instagram </a>
-    </div>
-  );
- 
-}
-
-function App() {
-  return(
-    <div>
-      <h1>Conheça a nossa equipe</h1>
-      <Equipe  nome="Diego"  cargo="Desenvolvedor" idade="33" fb="http://google.com"/>
-
-    </div>
-);
-}
-
-export default App;
+export default App
