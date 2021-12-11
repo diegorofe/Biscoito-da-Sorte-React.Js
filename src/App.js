@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Biscoito from './assets/biscoito.png'
+import './style.css'
 
 
 export default class App extends Component {
@@ -6,57 +8,50 @@ export default class App extends Component {
 constructor(props){
   super(props);
   this.state = {
-      form: {
+    textoFrase: 'Oio'
+  };
 
-      nome: 'Diego',
-      email: 'cadastro@email.com',
-      senha: '123',
-      sexo: 'Masculino'
+  this.quebraBiscoito = this.quebraBiscoito.bind(this)
 
-      }
-   
+    this.frases = ['Siga os bons e aprenda com eles.', 'O bom-senso vale mais do que muito conhecimento.', 
+    'O riso é a menor distância entre duas pessoas.', 
+    'Deixe de lado as preocupações e seja feliz.',
+    'Realize o óbvio, pense no improvável e conquiste o impossível.',
+    'Acredite em milagres, mas não dependa deles.',
+    'A maior barreira para o sucesso é o medo do fracasso.']
+
+       
   }
 
-  this.dadosForm = this.dadosForm.bind(this)
+  quebraBiscoito() {
+    
+let state = this.state;
+let numeroAleatorio = Math.floor(Math.random() * this.frases.length)
+state.textoFrase = ' " ' + this.frases[numeroAleatorio ] + ' " '
+this.setState(state)
 
 
-}
-
-//função para mudar o state
-dadosForm(e) {
-  let form = this.state.form
-  form[e.target.name] = e.target.value
-  this.setState({form: form});
-}
+  }
 
 
 render(){
   return(
-    <div>
-        <h3>Sistema de Login</h3>
-      Nome:
-      <input type="text" name="nome" value={this.state.form.nome} 
-      onChange={this.dadosForm}></input> <br/>
-      Email:
-      <input onChange={this.dadosForm}  type="email" value= {this.state.form.email} name="email"></input> <br/>
-      Senha:
-      <input onChange={this.dadosForm}  type="password" value= {this.state.form.senha} name="senha"></input> <br/>
-      Sexo:
-      <select name="sexo" value={this.state.form.sexo} onChange={this.dadosForm}>
-        <option value="Masculino">Masculino</option>
-        <option value="Feminino">Feminino</option>
-      </select>
-
-      <div>
-    Verificação das states
-      <h3>{this.state.form.nome}</h3>
-       <h3>{this.state.form.email}</h3>
-       <h3>{this.state.form.senha}</h3>
-       <h3>{this.state.form.sexo}</h3>
-     </div>
+    <div className='container'>
+      <img src={Biscoito} className='img'/>
+      <Botao nome='Abrir Biscoito' acaoBtn={this.quebraBiscoito}/>
+      <h3 className='textoFrase'>{this.state.textoFrase}</h3>
     </div>
 
   );
 }
+}
 
+class Botao extends Component {
+  render(){
+    return(
+      <div>
+        <button onClick={this.props.acaoBtn}>{this.props.nome}</button>
+      </div>
+    )
+  }
 }
