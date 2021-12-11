@@ -8,7 +8,7 @@ export default class App extends Component {
 constructor(props){
   super(props);
   this.state = {
-    textoFrase: 'Oio'
+    textoFrase: ''
   };
 
   this.quebraBiscoito = this.quebraBiscoito.bind(this)
@@ -18,7 +18,12 @@ constructor(props){
     'Deixe de lado as preocupações e seja feliz.',
     'Realize o óbvio, pense no improvável e conquiste o impossível.',
     'Acredite em milagres, mas não dependa deles.',
-    'A maior barreira para o sucesso é o medo do fracasso.']
+    'A maior barreira para o sucesso é o medo do fracasso.',
+    'Quando sobra dinheiro no fim do mês, você fica pensando que conta esqueceu de pagar.',
+    'Você descobre que tá ficando careca quando nota que o sabonete tem mais cabelo que você.', 
+    'O importante não é ganhar',
+    'o importante é competir sem perder e sem empatar.',
+    'Pense como um boleto. Um boleto sempre vence!']
 
        
   }
