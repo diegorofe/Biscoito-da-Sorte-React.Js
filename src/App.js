@@ -1,14 +1,42 @@
-import React, { Component } from 'react'
-import Membro from './componentes/Membro'
+import React, { Component } from 'react';
 
-class App extends Component {
-  render() {
-    return(
-      <div>
-        <Membro nome="Visitante"/>
-      </div>
-    )
-  }
+export default class App extends Component {
+
+constructor(props){
+  super(props);
+  this.state = {
+    status: false 
+  };
+
+  this.entrar = this.entrar.bind(this);
+  this.sair = this.sair.bind(this);
 }
 
-export default App
+entrar(){
+
+  this.setState({status: true});
+}
+
+sair(){
+ 
+  this.setState({status: false})  
+}
+
+render(){
+  return(
+    <div>
+      {this.state.status ? 
+      <div>
+        <h2>Bem vindo ao Sistema</h2>
+        <button onClick={this.sair}>sair</button>
+      </div> :
+      <div>
+        <h2>Olá visitante! Faça o login</h2>
+        <button onClick={this.entrar}>Entrar</button>
+      </div>
+      }
+    </div>
+  );
+}
+
+}
