@@ -16,4 +16,5 @@ Desta forma, cada commit guarda um exercício de aprendizagem básica que desenv
 - Manipulação de forms;
 - Projeto biscoito da sorte.
 
+<img align="center" alt="Diego-Bootstrap" src="https://github.com/diegorofe/visual-projetos/blob/master/biscoito%20da%20sorte.gif"/>
 
